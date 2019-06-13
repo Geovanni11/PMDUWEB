@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/DISTRITODETLACHALOYA_6.js"></script>
+        <script src="data/PROYECTOSYPROGRAMASESTRATGICOS_7.js"></script>
+        <script src="data/ISOMETRICOS_8.js"></script>
+        <script src="data/CORTESVIALES_9.js"></script>
+        <script src="data/DATOS_PMDU_10.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:18, minZoom:1
+        }).fitBounds([[19.384943266566324,-99.75066902548582],[19.495117080907487,-99.58735309665808]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_GoogleMaps_0;
+        var layer_GoogleHybrid_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_GoogleHybrid_1;
+        map.addLayer(layer_GoogleHybrid_1);
+        var img_FALSOCOLORURBANO_2 = 'data/FALSOCOLORURBANO_2.png';
+        var img_bounds_FALSOCOLORURBANO_2 = [[19.38779965218239,-99.70841293731083],[19.49228102827223,-99.62958819010998]];
+        var layer_FALSOCOLORURBANO_2 = new L.imageOverlay(img_FALSOCOLORURBANO_2, img_bounds_FALSOCOLORURBANO_2);
+        bounds_group.addLayer(layer_FALSOCOLORURBANO_2);
+        var img_INFRARROJOVEGETACIN_3 = 'data/INFRARROJOVEGETACIN_3.png';
+        var img_bounds_INFRARROJOVEGETACIN_3 = [[19.38779965218239,-99.70841293731083],[19.49228102827223,-99.62958819010998]];
+        var layer_INFRARROJOVEGETACIN_3 = new L.imageOverlay(img_INFRARROJOVEGETACIN_3, img_bounds_INFRARROJOVEGETACIN_3);
+        bounds_group.addLayer(layer_INFRARROJOVEGETACIN_3);
+        var img_NDVI_4 = 'data/NDVI_4.png';
+        var img_bounds_NDVI_4 = [[19.38779965218239,-99.70841293731083],[19.49228102827223,-99.62958819010998]];
+        var layer_NDVI_4 = new L.imageOverlay(img_NDVI_4, img_bounds_NDVI_4);
+        bounds_group.addLayer(layer_NDVI_4);
+        var img_TOPOGRAFAPENDIENTES_5 = 'data/TOPOGRAFAPENDIENTES_5.png';
+        var img_bounds_TOPOGRAFAPENDIENTES_5 = [[19.387828376906036,-99.7083032089723],[19.492266426776663,-99.62962024351879]];
+        var layer_TOPOGRAFAPENDIENTES_5 = new L.imageOverlay(img_TOPOGRAFAPENDIENTES_5, img_bounds_TOPOGRAFAPENDIENTES_5);
+        bounds_group.addLayer(layer_TOPOGRAFAPENDIENTES_5);
+        function pop_DISTRITODETLACHALOYA_6(feature, layer) {
+        }
+
+        function style_DISTRITODETLACHALOYA_6_0() {
+            return {
+                pane: 'pane_DISTRITODETLACHALOYA_6',
+                opacity: 1,
+                color: 'rgba(2,254,56,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,90,153,0.0)',
+            }
+        }
+        map.createPane('pane_DISTRITODETLACHALOYA_6');
+        map.getPane('pane_DISTRITODETLACHALOYA_6').style.zIndex = 406;
+        map.getPane('pane_DISTRITODETLACHALOYA_6').style['mix-blend-mode'] = 'normal';
+        var layer_DISTRITODETLACHALOYA_6 = new L.geoJson(json_DISTRITODETLACHALOYA_6, {
+            attribution: '',
+            pane: 'pane_DISTRITODETLACHALOYA_6',
+            onEachFeature: pop_DISTRITODETLACHALOYA_6,
+            style: style_DISTRITODETLACHALOYA_6_0,
+        });
+        bounds_group.addLayer(layer_DISTRITODETLACHALOYA_6);
+        map.addLayer(layer_DISTRITODETLACHALOYA_6);
+        function pop_PROYECTOSYPROGRAMASESTRATGICOS_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>FICHA:</strong><br />' + (feature.properties['html_exp'] !== null ? Autolinker.link(String(feature.properties['html_exp'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PROYECTOSYPROGRAMASESTRATGICOS_7_0() {
+            return {
+                pane: 'pane_PROYECTOSYPROGRAMASESTRATGICOS_7',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,101,255,1.0)',
+            }
+        }
+        map.createPane('pane_PROYECTOSYPROGRAMASESTRATGICOS_7');
+        map.getPane('pane_PROYECTOSYPROGRAMASESTRATGICOS_7').style.zIndex = 407;
+        map.getPane('pane_PROYECTOSYPROGRAMASESTRATGICOS_7').style['mix-blend-mode'] = 'normal';
+        var layer_PROYECTOSYPROGRAMASESTRATGICOS_7 = new L.geoJson(json_PROYECTOSYPROGRAMASESTRATGICOS_7, {
+            attribution: '',
+            pane: 'pane_PROYECTOSYPROGRAMASESTRATGICOS_7',
+            onEachFeature: pop_PROYECTOSYPROGRAMASESTRATGICOS_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_PROYECTOSYPROGRAMASESTRATGICOS_7_0(feature));
+            },
+        });
+        var cluster_PROYECTOSYPROGRAMASESTRATGICOS_7 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_PROYECTOSYPROGRAMASESTRATGICOS_7.addLayer(layer_PROYECTOSYPROGRAMASESTRATGICOS_7);
+
+        bounds_group.addLayer(layer_PROYECTOSYPROGRAMASESTRATGICOS_7);
+        function pop_ISOMETRICOS_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">USO:</th>\
+                        <td>' + (feature.properties['CLAVE-2PLA'] !== null ? Autolinker.link(String(feature.properties['CLAVE-2PLA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HABITANTES / HECTAREA:</th>\
+                        <td>' + (feature.properties['HAB/HA'] !== null ? Autolinker.link(String(feature.properties['HAB/HA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">N° DE VIVIENDAS / HECTAREA:</th>\
+                        <td>' + (feature.properties['VIV/HA'] !== null ? Autolinker.link(String(feature.properties['VIV/HA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">M2 DE TERRENO BRUTO / VIVIENDA:</th>\
+                        <td>' + (feature.properties['M2_TERR_BR'] !== null ? Autolinker.link(String(feature.properties['M2_TERR_BR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">M2 DE TERRENO NETO / VIVIENDA:</th>\
+                        <td>' + (feature.properties['M2_TERR_NE'] !== null ? Autolinker.link(String(feature.properties['M2_TERR_NE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LOTE MÍNIMO / FRENTE ML:</th>\
+                        <td>' + (feature.properties['FRENTE_ML'] !== null ? Autolinker.link(String(feature.properties['FRENTE_ML'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LOTE MÍNIMO / SUPERFICIE M2:</th>\
+                        <td>' + (feature.properties['SUP_M2'] !== null ? Autolinker.link(String(feature.properties['SUP_M2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% DE SUPERFICIE MÍNIMA SIN CONSTRUIR:</th>\
+                        <td>' + (feature.properties['%SUP_MIN'] !== null ? Autolinker.link(String(feature.properties['%SUP_MIN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% DE SUPERFICIE MÁXIMA DE DESPLANTE</th>\
+                        <td>' + (feature.properties['%SUP_DES'] !== null ? Autolinker.link(String(feature.properties['%SUP_DES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ALTURA MÁXIMA EN NIVELES:</th>\
+                        <td>' + (feature.properties['ALT_MAX'] !== null ? Autolinker.link(String(feature.properties['ALT_MAX'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ML. SOBRE EL NIVEL DE LA BANQUETA:</th>\
+                        <td>' + (feature.properties['ML_BANQ'] !== null ? Autolinker.link(String(feature.properties['ML_BANQ'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NÚMERO DE VECES EL ÁREA DEL LOTE MÍNIMO:</th>\
+                        <td>' + (feature.properties['NUM_VECS'] !== null ? Autolinker.link(String(feature.properties['NUM_VECS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ISOMETRICO:</strong><br />' + (feature.properties['html_exp'] !== null ? Autolinker.link(String(feature.properties['html_exp'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ISOMETRICOS_8_0() {
+            return {
+                pane: 'pane_ISOMETRICOS_8',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,0,3,1.0)',
+            }
+        }
+        map.createPane('pane_ISOMETRICOS_8');
+        map.getPane('pane_ISOMETRICOS_8').style.zIndex = 408;
+        map.getPane('pane_ISOMETRICOS_8').style['mix-blend-mode'] = 'normal';
+        var layer_ISOMETRICOS_8 = new L.geoJson(json_ISOMETRICOS_8, {
+            attribution: '',
+            pane: 'pane_ISOMETRICOS_8',
+            onEachFeature: pop_ISOMETRICOS_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_ISOMETRICOS_8_0(feature));
+            },
+        });
+        var cluster_ISOMETRICOS_8 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_ISOMETRICOS_8.addLayer(layer_ISOMETRICOS_8);
+
+        bounds_group.addLayer(layer_ISOMETRICOS_8);
+        function pop_CORTESVIALES_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>CORTE VIAL:</strong><br />' + (feature.properties['hmtl_exp'] !== null ? Autolinker.link(String(feature.properties['hmtl_exp'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CORTESVIALES_9_0() {
+            return {
+                pane: 'pane_CORTESVIALES_9',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,158,23,1.0)',
+            }
+        }
+        map.createPane('pane_CORTESVIALES_9');
+        map.getPane('pane_CORTESVIALES_9').style.zIndex = 409;
+        map.getPane('pane_CORTESVIALES_9').style['mix-blend-mode'] = 'normal';
+        var layer_CORTESVIALES_9 = new L.geoJson(json_CORTESVIALES_9, {
+            attribution: '',
+            pane: 'pane_CORTESVIALES_9',
+            onEachFeature: pop_CORTESVIALES_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CORTESVIALES_9_0(feature));
+            },
+        });
+        var cluster_CORTESVIALES_9 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_CORTESVIALES_9.addLayer(layer_CORTESVIALES_9);
+
+        bounds_group.addLayer(layer_CORTESVIALES_9);
+        function pop_DATOS_PMDU_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">NOMBRE DEL PLANO:</th>\
+                        <td>' + (feature.properties['NOM'] !== null ? Autolinker.link(String(feature.properties['NOM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>VISTA PREVIA:</strong><br />' + (feature.properties['html_exp'] !== null ? Autolinker.link(String(feature.properties['html_exp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ENLACE DEL PLANO:</th>\
+                        <td>' + (feature.properties['COM'] !== null ? Autolinker.link(String(feature.properties['COM'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DATOS_PMDU_10_0() {
+            return {
+                pane: 'pane_DATOS_PMDU_10',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,243,1,1.0)',
+            }
+        }
+        map.createPane('pane_DATOS_PMDU_10');
+        map.getPane('pane_DATOS_PMDU_10').style.zIndex = 410;
+        map.getPane('pane_DATOS_PMDU_10').style['mix-blend-mode'] = 'normal';
+        var layer_DATOS_PMDU_10 = new L.geoJson(json_DATOS_PMDU_10, {
+            attribution: '',
+            pane: 'pane_DATOS_PMDU_10',
+            onEachFeature: pop_DATOS_PMDU_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_DATOS_PMDU_10_0(feature));
+            },
+        });
+        var cluster_DATOS_PMDU_10 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_DATOS_PMDU_10.addLayer(layer_DATOS_PMDU_10);
+
+        bounds_group.addLayer(layer_DATOS_PMDU_10);
+        cluster_DATOS_PMDU_10.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/DATOS_PMDU_10.png" /> DATOS_PMDU': cluster_DATOS_PMDU_10,'<img src="legend/CORTESVIALES_9.png" /> CORTES VIALES': cluster_CORTESVIALES_9,'<img src="legend/ISOMETRICOS_8.png" /> ISOMETRICOS': cluster_ISOMETRICOS_8,'<img src="legend/PROYECTOSYPROGRAMASESTRATGICOS_7.png" /> PROYECTOS Y PROGRAMAS ESTRATÉGICOS': cluster_PROYECTOSYPROGRAMASESTRATGICOS_7,'<img src="legend/DISTRITODETLACHALOYA_6.png" /> DISTRITO DE TLACHALOYA': layer_DISTRITODETLACHALOYA_6,"TOPOGRAFÍA (PENDIENTES %)": layer_TOPOGRAFAPENDIENTES_5,"NDVI": layer_NDVI_4,"INFRARROJO (VEGETACIÓN)": layer_INFRARROJOVEGETACIN_3,"FALSO COLOR URBANO": layer_FALSOCOLORURBANO_2,"Google Hybrid": layer_GoogleHybrid_1,"Google Maps": layer_GoogleMaps_0,}).addTo(map);
+        setBounds();
+        map.addControl(new L.Control.Search({
+            layer: cluster_DATOS_PMDU_10,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'NOM'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        L.control.scale().addTo(map); 
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
